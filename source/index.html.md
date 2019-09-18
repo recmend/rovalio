@@ -41,7 +41,7 @@ All API requests must be made over HTTPS. Calls made over plain HTTP will fail. 
 
 Our API returns standard HTTP success or error status codes. For errors, we will also include extra information about what went wrong encoded in the response as JSON. The various HTTP status codes we might return are listed below.
 
-In general: Codes in the 2xx range indicate success. Codes in the 4xx range indicate an error that failed given the information provided (e.g., a required parameter was omitted, a charge failed, etc.). Codes in the 5xx range indicate an error with Finos's servers (these are rare).
+In general: Codes in the 2xx range indicate success. Codes in the 4xx range indicate an error that failed given the information provided (e.g., a required parameter was omitted, a charge failed, etc.). Codes in the 5xx range indicate an error with Roval's servers (these are rare).
 
 ## HTTP Status codes
 
@@ -54,7 +54,7 @@ Code | Title | Description
 404 | Not Found | The requested resource doesn't exist.
 409 | Conflict | The request conflicts with another request (perhaps due to using the same idempotent key).
 429 | Too Many Request | Too many requests hit the API too quickly. We recommend an exponential backoff of your requests.
-500,502,503,504 | Server Errors | Something went wrong on Finos's end. (These are rare.)
+500,502,503,504 | Server Errors | Something went wrong on Roval's end. (These are rare.)
 
 ## Error types
 
@@ -71,7 +71,7 @@ Code | Title | Description
 
 Type | Description
 ---- | -----------
-api_connection | Failure to connect to Finos's API.
+api_connection | Failure to connect to Roval's API.
 api_error | API errors cover any other type of problem (e.g., a temporary problem with our servers), and are extremely uncommon.
 authentication_error | Failure to properly authenticate yourself in the request.
 invalid_request | Invalid request errors arise when your request has invalid parameters.
@@ -131,10 +131,6 @@ Parameter | Type | Required
 --------- | ---- | -----------
 `email` | string | required
 `name`   | string | optional
-
-<aside class="information">
-Uploaded documents are not reviewed or approved in UAT. In Production, documents are reviewed by Finos's licensed customer service department to verify the user's identity.
-</aside>
 
 # Company
 
@@ -254,7 +250,3 @@ Parameter | Type | Required
 --------- | ---- | -----------
 `domain` | string | required
 `name`   | string | optional
-
-<aside class="information">
-Uploaded documents are not reviewed or approved in UAT. In Production, documents are reviewed by Finos's licensed customer service department to verify the user's identity.
-</aside>
