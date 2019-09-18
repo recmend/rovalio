@@ -296,7 +296,7 @@
 <h1 id='errors'>Errors</h1>
 <p>Our API returns standard HTTP success or error status codes. For errors, we will also include extra information about what went wrong encoded in the response as JSON. The various HTTP status codes we might return are listed below.</p>
 
-<p>In general: Codes in the 2xx range indicate success. Codes in the 4xx range indicate an error that failed given the information provided (e.g., a required parameter was omitted, a charge failed, etc.). Codes in the 5xx range indicate an error with Finos&#39;s servers (these are rare).</p>
+<p>In general: Codes in the 2xx range indicate success. Codes in the 4xx range indicate an error that failed given the information provided (e.g., a required parameter was omitted, a charge failed, etc.). Codes in the 5xx range indicate an error with Roval&#39;s servers (these are rare).</p>
 <h2 id='http-status-codes'>HTTP Status codes</h2>
 <table><thead>
 <tr>
@@ -343,7 +343,7 @@
 <tr>
 <td>500,502,503,504</td>
 <td>Server Errors</td>
-<td>Something went wrong on Finos&#39;s end. (These are rare.)</td>
+<td>Something went wrong on Roval&#39;s end. (These are rare.)</td>
 </tr>
 </tbody></table>
 <h2 id='error-types'>Error types</h2>
@@ -365,7 +365,7 @@
 </thead><tbody>
 <tr>
 <td>api_connection</td>
-<td>Failure to connect to Finos&#39;s API.</td>
+<td>Failure to connect to Roval&#39;s API.</td>
 </tr>
 <tr>
 <td>api_error</td>
@@ -452,10 +452,6 @@
 <td>optional</td>
 </tr>
 </tbody></table>
-
-<aside class="information">
-Uploaded documents are not reviewed or approved in UAT. In Production, documents are reviewed by Finos's licensed customer service department to verify the user's identity.
-</aside>
 <h1 id='company'>Company</h1>
 <p>The company API lets you retrieve a company&#39;s social information.</p>
 
@@ -592,10 +588,6 @@ Uploaded documents are not reviewed or approved in UAT. In Production, documents
 <td>optional</td>
 </tr>
 </tbody></table>
-
-<aside class="information">
-Uploaded documents are not reviewed or approved in UAT. In Production, documents are reviewed by Finos's licensed customer service department to verify the user's identity.
-</aside>
 
       </div>
       <div class="dark-box">
