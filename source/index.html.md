@@ -5,7 +5,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - shell: curl
 
 toc_footers:
-
+- Backed by <a href='https://candor.ws' target='_blank'>Candor</a>
 ---
 
 # Introduction
