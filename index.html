@@ -252,7 +252,7 @@
               </ul>
           </li>
           <li>
-            <a href="#favicon" class="toc-h1 toc-link" data-title="Favicon">Favicon</a>
+            <a href="#extract" class="toc-h1 toc-link" data-title="Extract">Extract</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#http-request-3" class="toc-h2 toc-link" data-title="HTTP Request">HTTP Request</a>
@@ -260,7 +260,7 @@
               </ul>
           </li>
           <li>
-            <a href="#extract" class="toc-h1 toc-link" data-title="Extract">Extract</a>
+            <a href="#favicon" class="toc-h1 toc-link" data-title="Favicon">Favicon</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#http-request-4" class="toc-h2 toc-link" data-title="HTTP Request">HTTP Request</a>
@@ -515,41 +515,6 @@ While in beta, APIs are free and no authentication key is required.
 <td>required</td>
 </tr>
 </tbody></table>
-<h1 id='favicon'>Favicon</h1>
-<p>The favicon API lets you generate a website favicon icon.</p>
-
-<blockquote>
-<p>Example Request</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X GET https://api.nexus150.com/favicon?name<span class="o">=</span>Segment <span class="se">\</span>
-  -H <span class="s2">"Bearer: sk_yourapikey"</span> <span class="se">\</span>
-</code></pre>
-<blockquote>
-<p>You can call the API directly from an html link tag - images are returned inline. For example:</p>
-</blockquote>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"shortcut icon"</span> <span class="na">id=</span><span class="s">"favicon"</span> <span class="na">href=</span><span class="s">"https://api.nexus150.com/favicon?name=Segment"</span> <span class="nt">/&gt;</span>
-</code></pre>
-<blockquote>
-<p><img src="https://api.nexus150.com/favicon?name=Segment"></p>
-</blockquote>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://api.nexus150.com/favicon?name={name}</code></p>
-
-<p><strong>ARGUMENTS</strong></p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Required</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>name</code></td>
-<td>string</td>
-<td>required</td>
-</tr>
-</tbody></table>
 <h1 id='extract'>Extract</h1>
 <p>The extract API lets you retrieve important meta data for articles, videos, and links.</p>
 
@@ -578,7 +543,7 @@ While in beta, APIs are free and no authentication key is required.
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request-4'>HTTP Request</h3>
+</span></code></pre><h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET https://api.nexus150.com/extract?url={url}</code></p>
 
 <p><strong>ARGUMENTS</strong></p>
@@ -592,6 +557,41 @@ While in beta, APIs are free and no authentication key is required.
 </thead><tbody>
 <tr>
 <td><code>url</code></td>
+<td>string</td>
+<td>required</td>
+</tr>
+</tbody></table>
+<h1 id='favicon'>Favicon</h1>
+<p>The favicon API lets you generate a website favicon icon.</p>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://api.nexus150.com/favicon?name<span class="o">=</span>Segment <span class="se">\</span>
+  -H <span class="s2">"Bearer: sk_yourapikey"</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>You can call the API directly from an html link tag - images are returned inline. For example:</p>
+</blockquote>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"shortcut icon"</span> <span class="na">id=</span><span class="s">"favicon"</span> <span class="na">href=</span><span class="s">"https://api.nexus150.com/favicon?name=Segment"</span> <span class="nt">/&gt;</span>
+</code></pre>
+<blockquote>
+<p><img src="https://api.nexus150.com/favicon?name=Segment"></p>
+</blockquote>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET https://api.nexus150.com/favicon?name={name}</code></p>
+
+<p><strong>ARGUMENTS</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
 <td>string</td>
 <td>required</td>
 </tr>
