@@ -180,35 +180,6 @@ Parameter | Type | Required
 --------- | ---- | -----------
 `domain` | string | required
 
-# Favicon
-
-The favicon API lets you generate a website favicon icon.
-
-> Example Request
-
-```shell
-curl -X GET https://api.nexus150.com/favicon?name=Segment \
-  -H "Bearer: sk_yourapikey" \
-```
-
-> You can call the API directly from an html link tag - images are returned inline. For example:
-
-```html
-<link rel="shortcut icon" id="favicon" href="https://api.nexus150.com/favicon?name=Segment" />
-```
-
-> <img src="https://api.nexus150.com/favicon?name=Segment">
-
-### HTTP Request
-
-`GET https://api.nexus150.com/favicon?name={name}`
-
-**ARGUMENTS**
-
-Parameter | Type | Required
---------- | ---- | -----------
-`name`   | string | required
-
 # Extract
 
 The extract API lets you retrieve important meta data for articles, videos, and links.
@@ -250,6 +221,35 @@ curl -X GET https://api.nexus150.com/extract?url=https://www.youtube.com/watch?v
 Parameter | Type | Required
 --------- | ---- | -----------
 `url` | string | required
+
+# Favicon
+
+The favicon API lets you generate a website favicon icon.
+
+> Example Request
+
+```shell
+curl -X GET https://api.nexus150.com/favicon?name=Segment \
+  -H "Bearer: sk_yourapikey" \
+```
+
+> You can call the API directly from an html link tag - images are returned inline. For example:
+
+```html
+<link rel="shortcut icon" id="favicon" href="https://api.nexus150.com/favicon?name=Segment" />
+```
+
+> <img src="https://api.nexus150.com/favicon?name=Segment">
+
+### HTTP Request
+
+`GET https://api.nexus150.com/favicon?name={name}`
+
+**ARGUMENTS**
+
+Parameter | Type | Required
+--------- | ---- | -----------
+`name`   | string | required
 
 # Logo
 
