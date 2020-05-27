@@ -14,7 +14,7 @@ toc_footers:
 https://api.nexus150.com
 ```
 
-Welcome to Nexus! Nexus provides APIs for avatars, logos, favicon, and open-graph data.
+Nexus provides APIs for avatars, logos, favicon, and open-graph data.
 
 Nexus APIs are perfect for enriching company information, link unfurling, embedding, and displaying user avatars.
 
