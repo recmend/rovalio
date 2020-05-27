@@ -1,29 +1,33 @@
 ---
-title: Roval API Reference
+title: Nexus API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell: curl
 
 toc_footers:
-- Backed by <a href='https://candor.ws' target='_blank'>Candor</a>
+- Made by <a href='https://candor.ws' target='_blank'>Candor</a>
 ---
 
 # Introduction
 
 ```shell
-https://api.roval.io
+https://api.nexus150.com
 ```
 
-Welcome to Roval! This API reference provides information on available endpoints and how to interact with it.
+Welcome to Nexus! Nexus provides APIs for avatars, logos, favicon, and open-graph data.
 
-The Roval API is organized around [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer). Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. All requests should be over SSL. All request and response bodies, including errors are encoded in JSON.
+Nexus APIs are perfect for enriching company information, link unfurling, embedding, and displaying user avatars.
+
+This API reference provides information on available endpoints and how to interact with it.
+
+The Nexus API is organized around [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer). Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. All requests should be over SSL. All request and response bodies, including errors are encoded in JSON.
 
 # Authentication
 
 > Example Request
 
 ```shell
-$ curl https://api.roval.io/avatar \
+$ curl https://api.nexus150.com/avatar \
   -H "Authorization: your_api_key"
 ```
 
@@ -37,11 +41,15 @@ Alternatively you can also pass your API key as a bearer token in an Authorizati
 
 All API requests must be made over HTTPS. Calls made over plain HTTP will fail. API requests without authentication will also fail.
 
+<aside class="notice">
+While in beta, APIs are free and no authentication key is required.
+</aside>
+
 # Errors
 
 Our API returns standard HTTP success or error status codes. For errors, we will also include extra information about what went wrong encoded in the response as JSON. The various HTTP status codes we might return are listed below.
 
-In general: Codes in the 2xx range indicate success. Codes in the 4xx range indicate an error that failed given the information provided (e.g., a required parameter was omitted, a charge failed, etc.). Codes in the 5xx range indicate an error with Roval's servers (these are rare).
+In general: Codes in the 2xx range indicate success. Codes in the 4xx range indicate an error that failed given the information provided (e.g., a required parameter was omitted, a charge failed, etc.). Codes in the 5xx range indicate an error with Nexus's servers (these are rare).
 
 ## HTTP Status codes
 
@@ -54,7 +62,7 @@ Code | Title | Description
 404 | Not Found | The requested resource doesn't exist.
 409 | Conflict | The request conflicts with another request (perhaps due to using the same idempotent key).
 429 | Too Many Request | Too many requests hit the API too quickly. We recommend an exponential backoff of your requests.
-500,502,503,504 | Server Errors | Something went wrong on Roval's end. (These are rare.)
+500,502,503,504 | Server Errors | Something went wrong on Nexus's end. (These are rare.)
 
 ## Error types
 
@@ -71,7 +79,7 @@ Code | Title | Description
 
 Type | Description
 ---- | -----------
-api_connection | Failure to connect to Roval's API.
+api_connection | Failure to connect to Nexus's API.
 api_error | API errors cover any other type of problem (e.g., a temporary problem with our servers), and are extremely uncommon.
 authentication_error | Failure to properly authenticate yourself in the request.
 invalid_request | Invalid request errors arise when your request has invalid parameters.
@@ -94,7 +102,7 @@ not_found | Resource was not found.
 }
 ```
 
-The Roval API is rate limited to prevent abuse that would degrade our ability to maintain consistent API performance for all users. By default, each API key or app is rate limited at 10,000 requests per hour. If your requests are being rate limited, HTTP response code 429 will be returned with an rate_limit_exceeded error.
+The Nexus API is rate limited to prevent abuse that would degrade our ability to maintain consistent API performance for all users. By default, each API key or app is rate limited at 10,000 requests per hour. If your requests are being rate limited, HTTP response code 429 will be returned with an rate_limit_exceeded error.
 
 # Avatar
 
@@ -103,14 +111,14 @@ The avatar API lets you retrieve a person's avatar using person's email address 
 > Example Request
 
 ```shell
-curl -X GET https://api.roval.io/avatar?email=john@example.org&name=John+Doe \
+curl -X GET https://api.nexus150.com/avatar?email=john@example.org&name=John+Doe \
   -H "Bearer: sk_yourapikey" \
 ```
 
 > You can call the API directly from an html img tag - images are returned inline. For example:
 
 ```html
-<img src="https://api.roval.io/avatar?email=john@example.org&name=John+Doe">
+<img src="https://api.nexus150.com/avatar?email=john@example.org&name=John+Doe">
 ```
 
 > Return's person gravatar image
@@ -123,7 +131,7 @@ curl -X GET https://api.roval.io/avatar?email=john@example.org&name=John+Doe \
 
 ### HTTP Request
 
-`GET https://api.roval.io/avatar?email={email}&name={name}`
+`GET https://api.nexus150.com/avatar?email={email}&name={name}`
 
 **ARGUMENTS**
 
@@ -139,7 +147,7 @@ The company API lets you retrieve a company's social information.
 > Example Request
 
 ```shell
-curl -X GET https://api.roval.io/company?domain=example.com \
+curl -X GET https://api.nexus150.com/company?domain=example.com \
   -H "Bearer: sk_yourapikey" \
 ```
 
@@ -164,7 +172,7 @@ curl -X GET https://api.roval.io/company?domain=example.com \
 
 ### HTTP Request
 
-`GET https://api.roval.io/logo?domain={domain}`
+`GET https://api.nexus150.com/logo?domain={domain}`
 
 **ARGUMENTS**
 
@@ -179,21 +187,21 @@ The favicon API lets you generate a website favicon icon.
 > Example Request
 
 ```shell
-curl -X GET https://api.roval.io/favicon?name=Segment \
+curl -X GET https://api.nexus150.com/favicon?name=Segment \
   -H "Bearer: sk_yourapikey" \
 ```
 
 > You can call the API directly from an html link tag - images are returned inline. For example:
 
 ```html
-<link rel="shortcut icon" id="favicon" href="https://api.roval.io/favicon?name=Segment" />
+<link rel="shortcut icon" id="favicon" href="https://api.nexus150.com/favicon?name=Segment" />
 ```
 
 > <img src="https://api.nexus150.com/favicon?name=Segment">
 
 ### HTTP Request
 
-`GET https://api.roval.io/favicon?name={name}`
+`GET https://api.nexus150.com/favicon?name={name}`
 
 **ARGUMENTS**
 
@@ -208,7 +216,7 @@ The extract API lets you retrieve important meta data for articles, videos, and 
 > Example Request
 
 ```shell
-curl -X GET https://api.roval.io/extract?url=https://www.youtube.com/watch?v=tXqnRMU1fTs \
+curl -X GET https://api.nexus150.com/extract?url=https://www.youtube.com/watch?v=tXqnRMU1fTs \
   -H "Bearer: sk_yourapikey" \
 ```
 
@@ -235,7 +243,7 @@ curl -X GET https://api.roval.io/extract?url=https://www.youtube.com/watch?v=tXq
 
 ### HTTP Request
 
-`GET https://api.roval.io/extract?url={url}`
+`GET https://api.nexus150.com/extract?url={url}`
 
 **ARGUMENTS**
 
@@ -250,14 +258,14 @@ The avatar API lets you retrieve a person's avatar using person's email address 
 > Example Request
 
 ```shell
-curl -X GET https://api.roval.io/logo?domain=example.com&name=Company \
+curl -X GET https://api.nexus150.com/logo?domain=example.com&name=Company \
   -H "Bearer: sk_yourapikey" \
 ```
 
 > You can call the API directly from an html img tag - images are returned inline. For example:
 
 ```html
-<img src="https://api.roval.io/logo?domain=segment.com&name=Segment">
+<img src="https://api.nexus150.com/logo?domain=segment.com&name=Segment">
 ```
 
 > Return's company logo image
@@ -271,7 +279,7 @@ curl -X GET https://api.roval.io/logo?domain=example.com&name=Company \
 
 ### HTTP Request
 
-`GET https://api.roval.io/logo?domain={domain}&name={company_name}`
+`GET https://api.nexus150.com/logo?domain={domain}&name={company_name}`
 
 **ARGUMENTS**
 
