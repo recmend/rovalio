@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Roval API Reference</title>
+    <title>Nexus API Reference</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -277,22 +277,26 @@
           </li>
       </ul>
         <ul class="toc-footer">
-            <li>Backed by <a href='https://candor.ws' target='_blank'>Candor</a></li>
+            <li>Made by <a href='https://candor.ws' target='_blank'>Candor</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='introduction'>Introduction</h1><pre class="highlight shell tab-shell"><code>https://api.roval.io
+        <h1 id='introduction'>Introduction</h1><pre class="highlight shell tab-shell"><code>https://api.nexus150.com
 </code></pre>
-<p>Welcome to Roval! This API reference provides information on available endpoints and how to interact with it.</p>
+<p>Welcome to Nexus! Nexus provides APIs for avatars, logos, favicon, and open-graph data.</p>
 
-<p>The Roval API is organized around <a href="http://en.wikipedia.org/wiki/Representational_State_Transfer">REST</a>. Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. All requests should be over SSL. All request and response bodies, including errors are encoded in JSON.</p>
+<p>Nexus APIs are perfect for enriching company information, link unfurling, embedding, and displaying user avatars.</p>
+
+<p>This API reference provides information on available endpoints and how to interact with it.</p>
+
+<p>The Nexus API is organized around <a href="http://en.wikipedia.org/wiki/Representational_State_Transfer">REST</a>. Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. All requests should be over SSL. All request and response bodies, including errors are encoded in JSON.</p>
 <h1 id='authentication'>Authentication</h1>
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>curl https://api.roval.io/avatar <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>curl https://api.nexus150.com/avatar <span class="se">\</span>
   -H <span class="s2">"Authorization: your_api_key"</span>
 </code></pre>
 <p>Authentication is done via the API key which you can find in your account settings. Your API keys carry many privileges, so be sure to keep them secure! Do not share your secret API keys in publicly accessible areas such as GitHub, client-side code, and so forth.</p>
@@ -304,10 +308,14 @@
 <p><code>-H &quot;Authorization: Bearer *your_api_key*&quot;</code></p>
 
 <p>All API requests must be made over HTTPS. Calls made over plain HTTP will fail. API requests without authentication will also fail.</p>
+
+<aside class="notice">
+While in beta, APIs are free and no authentication key is required.
+</aside>
 <h1 id='errors'>Errors</h1>
 <p>Our API returns standard HTTP success or error status codes. For errors, we will also include extra information about what went wrong encoded in the response as JSON. The various HTTP status codes we might return are listed below.</p>
 
-<p>In general: Codes in the 2xx range indicate success. Codes in the 4xx range indicate an error that failed given the information provided (e.g., a required parameter was omitted, a charge failed, etc.). Codes in the 5xx range indicate an error with Roval&#39;s servers (these are rare).</p>
+<p>In general: Codes in the 2xx range indicate success. Codes in the 4xx range indicate an error that failed given the information provided (e.g., a required parameter was omitted, a charge failed, etc.). Codes in the 5xx range indicate an error with Nexus&#39;s servers (these are rare).</p>
 <h2 id='http-status-codes'>HTTP Status codes</h2>
 <table><thead>
 <tr>
@@ -354,7 +362,7 @@
 <tr>
 <td>500,502,503,504</td>
 <td>Server Errors</td>
-<td>Something went wrong on Roval&#39;s end. (These are rare.)</td>
+<td>Something went wrong on Nexus&#39;s end. (These are rare.)</td>
 </tr>
 </tbody></table>
 <h2 id='error-types'>Error types</h2>
@@ -376,7 +384,7 @@
 </thead><tbody>
 <tr>
 <td>api_connection</td>
-<td>Failure to connect to Roval&#39;s API.</td>
+<td>Failure to connect to Nexus&#39;s API.</td>
 </tr>
 <tr>
 <td>api_error</td>
@@ -416,20 +424,20 @@
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>The Roval API is rate limited to prevent abuse that would degrade our ability to maintain consistent API performance for all users. By default, each API key or app is rate limited at 10,000 requests per hour. If your requests are being rate limited, HTTP response code 429 will be returned with an rate_limit_exceeded error.</p>
+<p>The Nexus API is rate limited to prevent abuse that would degrade our ability to maintain consistent API performance for all users. By default, each API key or app is rate limited at 10,000 requests per hour. If your requests are being rate limited, HTTP response code 429 will be returned with an rate_limit_exceeded error.</p>
 <h1 id='avatar'>Avatar</h1>
 <p>The avatar API lets you retrieve a person&#39;s avatar using person&#39;s email address or name. The avatar API checks if an associated profile with Gravatar.</p>
 
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X GET https://api.roval.io/avatar?email<span class="o">=</span>john@example.org&amp;name<span class="o">=</span>John+Doe <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://api.nexus150.com/avatar?email<span class="o">=</span>john@example.org&amp;name<span class="o">=</span>John+Doe <span class="se">\</span>
   -H <span class="s2">"Bearer: sk_yourapikey"</span> <span class="se">\</span>
 </code></pre>
 <blockquote>
 <p>You can call the API directly from an html img tag - images are returned inline. For example:</p>
 </blockquote>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"https://api.roval.io/avatar?email=john@example.org&amp;name=John+Doe"</span><span class="nt">&gt;</span>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"https://api.nexus150.com/avatar?email=john@example.org&amp;name=John+Doe"</span><span class="nt">&gt;</span>
 </code></pre>
 <blockquote>
 <p>Return&#39;s person gravatar image</p>
@@ -441,7 +449,7 @@
 <p><img src="https://api.nexus150.com/avatar?email=john@example.org&name=John+Doe" alt="John Doe Avatar" width="100" height="100"></p>
 </blockquote>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://api.roval.io/avatar?email={email}&amp;name={name}</code></p>
+<p><code>GET https://api.nexus150.com/avatar?email={email}&amp;name={name}</code></p>
 
 <p><strong>ARGUMENTS</strong></p>
 
@@ -469,7 +477,7 @@
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X GET https://api.roval.io/company?domain<span class="o">=</span>example.com <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://api.nexus150.com/company?domain<span class="o">=</span>example.com <span class="se">\</span>
   -H <span class="s2">"Bearer: sk_yourapikey"</span> <span class="se">\</span>
 </code></pre>
 <blockquote>
@@ -490,7 +498,7 @@
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://api.roval.io/logo?domain={domain}</code></p>
+<p><code>GET https://api.nexus150.com/logo?domain={domain}</code></p>
 
 <p><strong>ARGUMENTS</strong></p>
 
@@ -513,19 +521,19 @@
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X GET https://api.roval.io/favicon?name<span class="o">=</span>Segment <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://api.nexus150.com/favicon?name<span class="o">=</span>Segment <span class="se">\</span>
   -H <span class="s2">"Bearer: sk_yourapikey"</span> <span class="se">\</span>
 </code></pre>
 <blockquote>
 <p>You can call the API directly from an html link tag - images are returned inline. For example:</p>
 </blockquote>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"shortcut icon"</span> <span class="na">id=</span><span class="s">"favicon"</span> <span class="na">href=</span><span class="s">"https://api.roval.io/favicon?name=Segment"</span> <span class="nt">/&gt;</span>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"shortcut icon"</span> <span class="na">id=</span><span class="s">"favicon"</span> <span class="na">href=</span><span class="s">"https://api.nexus150.com/favicon?name=Segment"</span> <span class="nt">/&gt;</span>
 </code></pre>
 <blockquote>
 <p><img src="https://api.nexus150.com/favicon?name=Segment"></p>
 </blockquote>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://api.roval.io/favicon?name={name}</code></p>
+<p><code>GET https://api.nexus150.com/favicon?name={name}</code></p>
 
 <p><strong>ARGUMENTS</strong></p>
 
@@ -548,7 +556,7 @@
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X GET https://api.roval.io/extract?url<span class="o">=</span>https://www.youtube.com/watch?v<span class="o">=</span>tXqnRMU1fTs <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://api.nexus150.com/extract?url<span class="o">=</span>https://www.youtube.com/watch?v<span class="o">=</span>tXqnRMU1fTs <span class="se">\</span>
   -H <span class="s2">"Bearer: sk_yourapikey"</span> <span class="se">\</span>
 </code></pre>
 <blockquote>
@@ -571,7 +579,7 @@
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request-4'>HTTP Request</h3>
-<p><code>GET https://api.roval.io/extract?url={url}</code></p>
+<p><code>GET https://api.nexus150.com/extract?url={url}</code></p>
 
 <p><strong>ARGUMENTS</strong></p>
 
@@ -594,13 +602,13 @@
 <blockquote>
 <p>Example Request</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X GET https://api.roval.io/logo?domain<span class="o">=</span>example.com&amp;name<span class="o">=</span>Company <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://api.nexus150.com/logo?domain<span class="o">=</span>example.com&amp;name<span class="o">=</span>Company <span class="se">\</span>
   -H <span class="s2">"Bearer: sk_yourapikey"</span> <span class="se">\</span>
 </code></pre>
 <blockquote>
 <p>You can call the API directly from an html img tag - images are returned inline. For example:</p>
 </blockquote>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"https://api.roval.io/logo?domain=segment.com&amp;name=Segment"</span><span class="nt">&gt;</span>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"https://api.nexus150.com/logo?domain=segment.com&amp;name=Segment"</span><span class="nt">&gt;</span>
 </code></pre>
 <blockquote>
 <p>Return&#39;s company logo image</p>
@@ -612,7 +620,7 @@
 <p><img src="https://api.nexus150.com/logo?domain=striping.com&name=Segment" alt="Segment" width="100" height="100"></p>
 </blockquote>
 <h3 id='http-request-5'>HTTP Request</h3>
-<p><code>GET https://api.roval.io/logo?domain={domain}&amp;name={company_name}</code></p>
+<p><code>GET https://api.nexus150.com/logo?domain={domain}&amp;name={company_name}</code></p>
 
 <p><strong>ARGUMENTS</strong></p>
 
